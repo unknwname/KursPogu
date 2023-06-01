@@ -43,7 +43,7 @@ namespace KursPogud
                 Label cost= new Label();
                 check.Tag = s[0];
                 CheckBoxes.Add(check);
-                name.Height = 140;
+                
                 compounds.Width = 260;
                 compounds.Height = 140;
                 name.Text = s[1];

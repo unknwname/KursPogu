@@ -223,12 +223,13 @@ namespace KursPogud
             }
             connection.Close();
         }
-        public void ChangeStatusDishes(int idOrder,int idDishes,string filter)
+        public void ChangeStatusDishes(int idOrder,int idDishes)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             connection.Open();
-            string sql = $"UPDATE status_dishes SET status = 2 WHERE id_dishes ={idDishes} AND id_order={idOrder} {filter}";
+            string sql = $"UPDATE status_dishes SET status = 2 WHERE id_dishes ={idDishes} AND id_order={idOrder} AND status<2 LIMIT 1 ";
             // Создание объекта SQLiteCommand
+            int rowCount;
             using (SQLiteCommand command = new SQLiteCommand(sql, connection))
             {
                 command.ExecuteNonQuery();
